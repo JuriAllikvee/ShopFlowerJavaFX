@@ -1,7 +1,6 @@
 package com.example.FlowerShop.controller;
 
-import com.example.FlowerShop.service.AppUserService;
-import com.example.FlowerShop.service.FromService;
+import com.example.FlowerShop.tool.FormLoader;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Menu;
@@ -14,51 +13,57 @@ import java.util.ResourceBundle;
 @Component
 public class MenuFormController implements Initializable {
 
-    private final FromService fromService;
+    private final FormLoader formLoader;
 
     @FXML private Menu mProducts;
     @FXML private Menu mOrders;
     @FXML private Menu mAdmin;
+    @FXML private Menu mCustomers;
 
     @FXML private MenuItem miAddProduct;
-    @FXML private MenuItem miEditProduct;
+    @FXML private MenuItem miProductList;
     @FXML private MenuItem miAddOrder;
+    @FXML private MenuItem miAddCustomer;
 
-    public MenuFormController(FromService fromService) {
-        this.fromService = fromService;
+    public MenuFormController(FormLoader formLoader) {
+        this.formLoader = formLoader;
     }
 
     @FXML private void showNewProductForm() {
-        fromService.loadNewProductForm();
+        formLoader.loadNewProductForm();
     }
 
-    @FXML private void showEditProductForm() {
-        fromService.loadEditProductForm();
+    @FXML private void showProductListForm() {
+        formLoader.loadProductListForm();
     }
 
     @FXML private void showNewOrderForm() {
-        fromService.loadNewOrderForm();
+        formLoader.loadNewOrderForm();
+    }
+
+    @FXML private void showNewCustomerForm() {
+        formLoader.loadNewCustomerForm();
     }
 
     @FXML private void logout() {
-        AppUserService.currentUser = null;
-        fromService.loadLoginForm();
+        formLoader.loadLoginForm();
     }
-
-    private void configureMenuByRole() {
-        boolean isAdmin = AppUserService.currentUser.getRoles()
-                .contains(AppUserService.ROLES.ADMINISTRATOR.toString());
-        boolean isManager = AppUserService.currentUser.getRoles()
-                .contains(AppUserService.ROLES.MANAGER.toString());
-
-        mAdmin.setVisible(isAdmin);
-        miAddProduct.setVisible(isAdmin || isManager);
-        miEditProduct.setVisible(isAdmin || isManager);
-        miAddOrder.setVisible(isAdmin || isManager);
+    @FXML private void showCustomerListForm() {
+        formLoader.loadCustomerListForm();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         configureMenuByRole();
+    }
+
+    private void configureMenuByRole() {
+        boolean isAdmin = true;  // Временно для теста
+        boolean isManager = false;  // Временно для теста
+
+        mAdmin.setVisible(isAdmin);
+        mCustomers.setVisible(isAdmin || isManager);
+        miAddCustomer.setVisible(isAdmin || isManager);
+        miAddOrder.setVisible(isAdmin || isManager);
     }
 }

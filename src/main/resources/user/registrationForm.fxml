@@ -19,7 +19,6 @@
 
     <Button text="Зарегистрироваться" onAction="#registerUser" prefWidth="250"
             style="-fx-background-color: #5cb85c; -fx-text-fill: white;"/>
-
     <padding>
         <Insets top="10" right="10" bottom="10" left="10"/>
     </padding>

@@ -1,6 +1,6 @@
 package com.example.FlowerShop;
 
-import com.example.FlowerShop.service.FromService;
+import com.example.FlowerShop.tool.FormLoader;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import org.springframework.boot.SpringApplication;
@@ -21,7 +21,7 @@ public class FlowerShopApplication extends Application {
 	@Override
 	public void start(Stage stage) {
 		FlowerShopApplication.primaryStage = stage;
-		FromService formService = applicationContext.getBean(FromService.class);
+		FormLoader formService = applicationContext.getBean(FormLoader.class);
 		formService.loadLoginForm();
 	}
 

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class AppUserService {
+public class AppUserServiceImpl {
 
     public enum ROLES {
         ADMINISTRATOR, MANAGER, USER
@@ -17,7 +17,7 @@ public class AppUserService {
 
     private final AppUserRepository appUserRepository;
 
-    public AppUserService(AppUserRepository appUserRepository) {
+    public AppUserServiceImpl(AppUserRepository appUserRepository) {
         this.appUserRepository = appUserRepository;
     }
 

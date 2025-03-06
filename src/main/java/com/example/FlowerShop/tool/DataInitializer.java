@@ -1,7 +1,7 @@
 package com.example.FlowerShop.tool;
 
 import com.example.FlowerShop.model.AppUser;
-import com.example.FlowerShop.service.AppUserService;
+import com.example.FlowerShop.service.AppUserServiceImpl;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,16 +10,16 @@ import org.springframework.context.annotation.Configuration;
 public class DataInitializer {
 
     @Bean
-    public CommandLineRunner initAdmin(AppUserService appUserService) {
+    public CommandLineRunner initAdmin(AppUserServiceImpl appUserServiceImpl) {
         return args -> {
-            if (appUserService.findByUsername("admin").isEmpty()) {
+            if (appUserServiceImpl.findByUsername("admin").isEmpty()) {
                 AppUser admin = new AppUser();
                 admin.setFirstname("Admin");
                 admin.setLastname("Admin");
                 admin.setUsername("admin");
                 admin.setPassword("12345");
-                admin.getRoles().add(AppUserService.ROLES.ADMINISTRATOR.toString());
-                appUserService.add(admin);
+                admin.getRoles().add(AppUserServiceImpl.ROLES.ADMINISTRATOR.toString());
+                appUserServiceImpl.add(admin);
                 System.out.println("Администратор успешно зашёл.");
             }
         };

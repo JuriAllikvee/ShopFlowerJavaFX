@@ -14,14 +14,21 @@
             <Menu fx:id="mProducts" text="Товары">
                 <items>
                     <MenuItem fx:id="miAddProduct" text="Добавить товар" onAction="#showNewProductForm"/>
-                    <MenuItem fx:id="miEditProduct" text="Редактировать товар" onAction="#showEditProductForm"/>
+                    <MenuItem fx:id="miProductList" text="Список товаров" onAction="#showProductListForm"/>
                 </items>
             </Menu>
 
             <Menu fx:id="mOrders" text="Заказы">
                 <items>
                     <MenuItem fx:id="miAddOrder" text="Создать заказ" onAction="#showNewOrderForm"/>
-                    <MenuItem text="Список заказов"/>
+
+                </items>
+            </Menu>
+
+            <Menu fx:id="mCustomers" text="Покупатели">
+                <items>
+                    <MenuItem fx:id="miAddCustomer" text="Добавить покупателя" onAction="#showNewCustomerForm"/>
+                    <MenuItem fx:id="miCustomerList" text="Список покупателей" onAction="#showCustomerListForm"/>
                 </items>
             </Menu>
 
